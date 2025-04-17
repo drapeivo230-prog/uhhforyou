@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Cutie Tanya</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #e91e63;
+            margin-bottom: 30px;
+        }
+        .photo {
+            border-radius: 15px;
+            max-width: 100%;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .heart {
+            color: #e91e63;
+            font-size: 24px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .signature {
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .love-button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+        }
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(233, 30, 99, 0.4);
+        }
+        .love-button:active {
+            transform: translateY(0);
+        }
+        #floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .memory-box {
+            background-color: #fff8f8;
+            border: 2px solid #ffcdd2;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            display: none;
+        }
+        .memory-box p {
+            font-size: 17px;
+            color: #d81b60;
+        }
+        .hug-animation {
+            animation: hug 1s ease-in-out;
+        }
+        @keyframes hug {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        .hidden-message {
+            display: none;
+            font-weight: bold;
+            color: #e91e63;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For My Cutie Tanya</h1>
+        
+        <img src="https://i.imgur.com/liSy8OD.jpeg" alt="Our Photo Together" class="photo" id="photo">
+        
+        <div class="message">
+            <p>heyyyyy just wanted to lyk ilysmm naaaa</p>
+            <p>every moment with u is precious makmak</p>
+            <p>so lucky to have you right here</p>
+            <p>i want to be the one who makes you smile again :))) 🫶🏻🫶🏻</p>
+            <p>Ruk makmak okay มะะ <span class="heart">♥</span></p>
+        </div>
+        
+        <div class="signature">With all my love</div>
+        
+        <div class="button-container">
+            <button class="love-button" id="heart-button">Send Hearts ♥</button>
+            <button class="love-button" id="secret-button">Secret Message</button>
+        </div>
+        
+        <div class="love-question" style="margin-top: 30px;">
+            <p style="font-size: 18px;">Do you love me?? (Try press no 😠)</p>
+            <div style="display: flex; justify-content: center; gap: 30px; margin-top: 15px;">
+                <button class="love-button" id="yes-button">Yes</button>
+                <button class="love-button" id="no-button" style="background-color: #ff6b6b;">No</button>
+            </div>
+        </div>
+        
+        <p class="hidden-message" id="secret-message">miss u makmak naa hope u know that, i glad u are taking some time to unwind ยิ้มเย้อๆๆๆๆๆๆ ♥</p>
+        <p class="hidden-message" id="good-girl-message">gooooddd girl 🥰</p>
+    </div>
+    
+    <div id="floating-hearts"></div>
+    
+    <script>
+        // Heart animation
+        document.getElementById('heart-button').addEventListener('click', function() {
+            createHearts(30);
+        });
+        
+        function createHearts(count) {
+            const container = document.getElementById('floating-hearts');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '♥';
+                heart.style.position = 'absolute';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                heart.style.color = '#e91e63';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                heart.style.opacity = '0';
+                heart.style.transition = 'all ' + (Math.random() * 3 + 2) + 's ease-out';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.style.opacity = Math.random() * 0.5 + 0.5;
+                    heart.style.top = Math.random() * 30 + 'vh';
+                }, 50);
+                
+                setTimeout(() => {
+                    heart.style.opacity = '0';
+                }, 3000);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+        
+        // Secret message
+        document.getElementById('secret-button').addEventListener('click', function() {
+            const secretMessage = document.getElementById('secret-message');
+            if (secretMessage.style.display === 'block') {
+                secretMessage.style.display = 'none';
+            } else {
+                secretMessage.style.display = 'block';
+            }
+        });
+        
+        // Yes button
+        document.getElementById('yes-button').addEventListener('click', function() {
+            document.getElementById('good-girl-message').style.display = 'block';
+            createHearts(15);
+        });
+        
+        // No button that moves away
+        const noButton = document.getElementById('no-button');
+        
+        // Make button move on mouseover AND on click
+        noButton.addEventListener('mouseover', moveNoButton);
+        noButton.addEventListener('mousedown', moveNoButton);
+        noButton.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent any default click behavior
+            moveNoButton(); // Move the button again
+            return false;
+        });
+        
+        function moveNoButton() {
+            const button = noButton;
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Random position within container bounds with padding
+            const padding = 20;
+            const newX = Math.random() * (containerRect.width - button.offsetWidth - padding*2) + padding;
+            const newY = Math.random() * (containerRect.height - button.offsetHeight - padding*2) + padding;
+            
+            // Make the button absolutely positioned relative to container
+            container.style.position = 'relative';
+            button.style.position = 'absolute';
+            button.style.left = newX + 'px';
+            button.style.top = newY + 'px';
+            
+            // Add a small animation for better visibility of movement
+            button.style.transition = 'all 0.2s ease';
+            
+            // Remove focus to prevent hitting Enter to click it
+            button.blur();
+        }
+    </script>
+</body>
+</html>
